@@ -10,11 +10,10 @@ class GreatPlaces with ChangeNotifier {
 
   Future<void> loadPlaces() async {
     final dataList = await DBUtil.getData('places');
-    _items = dataList!
-        .map((item) => Place(
+    _items = dataList.map((item) => Place(
             id: item['id'],
             title: item['title'],
-            image: item['image'],
+            image: File(item['image']),
             location: null))
         .toList();
     notifyListeners();
@@ -41,9 +40,9 @@ class GreatPlaces with ChangeNotifier {
 
     _items.add(newPlace);
     DBUtil.insert('places', {
-      'id': newPlace.id,
-      'title': newPlace.title,
-      'image': newPlace.image,
+      'id': newPlace.id!,
+      'title': newPlace.title!,
+      'image': newPlace.image!.path,
     });
     notifyListeners();
   }
