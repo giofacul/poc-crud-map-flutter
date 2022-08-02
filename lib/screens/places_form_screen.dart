@@ -9,6 +9,12 @@ class PlaceFormScreen extends StatefulWidget {
 }
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
+  TextEditingController _titleController = TextEditingController();
+
+  void _submitForm(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +29,14 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(
-                  children: const [
+                  children: [
                     TextField(
-                      decoration: InputDecoration(
+                      controller: _titleController,
+                      decoration: const InputDecoration(
                         labelText: 'Título',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     ImageInput(),
                   ],
                 ),
@@ -37,7 +44,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
             ),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: _submitForm,
             icon: const Icon(Icons.add),
             label: const Text('Adicionar'),
           )
