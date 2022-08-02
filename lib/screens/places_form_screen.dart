@@ -37,7 +37,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    ImageInput(),
+                    const ImageInput(),
                   ],
                 ),
               ),
