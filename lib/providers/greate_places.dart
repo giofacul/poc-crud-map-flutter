@@ -44,7 +44,7 @@ class GreatPlaces with ChangeNotifier {
   Future<void> addPlace(String? title, File? image, LatLng position) async {
     String? address = await LocationUtil.getAddressFrom(position);
     final newPlace = Place(
-      id: Random().nextDouble().toString(),
+      id: Random().nextInt(10).toString(),
       title: title,
       image: image,
       location: PlaceLocation(
