@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:poc_crud_app/providers/greate_places.dart';
 import 'package:poc_crud_app/utils/app_routes.dart';
+import 'package:provider/provider.dart';
 
 class PlacesListScreen extends StatelessWidget {
   const PlacesListScreen({Key? key}) : super(key: key);
@@ -17,8 +19,37 @@ class PlacesListScreen extends StatelessWidget {
               icon: const Icon(Icons.add))
         ],
       ),
-      body: const Center(
-        child: CircularProgressIndicator(),
+      body: FutureBuilder(
+        future: Provider.of<GreatPlaces>(context, listen: false).loadPlaces(),
+        builder: (ctx, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<GreatPlaces>(
+                child: const Center(
+                  child: Text('Nenhum local cadastrado!'),
+                ),
+                builder: (ctx, greatPlaces, ch) => greatPlaces.itemsCount == 0
+                    ? ch!
+                    : ListView.builder(
+                        itemCount: greatPlaces.itemsCount,
+                        itemBuilder: (ctx, i) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage:
+                                FileImage(greatPlaces.getItemByIndex(i).image!),
+                          ),
+                          title: Text(greatPlaces.getItemByIndex(i).title!),
+                          subtitle: Text(
+                              greatPlaces.getItemByIndex(i).location!.address!),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                                AppRoutes.PLACE_DETAIL,
+                                arguments: greatPlaces.getItemByIndex(i));
+                          },
+                        ),
+                      ),
+              ),
       ),
     );
   }

@@ -1,4 +1,4 @@
-package com.example.poc_crud_app
+package com.mobapp.poc_crud_app
 
 import io.flutter.embedding.android.FlutterActivity
 

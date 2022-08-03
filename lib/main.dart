@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:poc_crud_app/providers/greate_places.dart';
+import 'package:poc_crud_app/screens/place_detail_screen.dart';
 import 'package:poc_crud_app/screens/places_form_screen.dart';
 import 'package:poc_crud_app/screens/places_list_screen.dart';
 import 'package:poc_crud_app/utils/app_routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,19 +13,23 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Um bom Lugar',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        accentColor: Colors.amber
+    return ChangeNotifierProvider(
+      create: (ctx) => GreatPlaces(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Um bom Lugar',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          primaryColor: Colors.indigo,
+        ),
+        home: const PlacesListScreen(),
+        routes: {
+          AppRoutes.PLACE_FORM: (context) => const PlaceFormScreen(),
+          AppRoutes.PLACE_DETAIL: (context) => const PlaceDetailScreen(),
+        },
       ),
-      home: const PlacesListScreen(),
-      routes: {
-        AppRoutes.PLACE_FORM: (context) => const PlaceFormScreen(),
-      },
     );
   }
 }

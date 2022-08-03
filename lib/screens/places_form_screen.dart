@@ -1,5 +1,10 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:poc_crud_app/providers/greate_places.dart';
 import 'package:poc_crud_app/widgets/image_input.dart';
+import 'package:poc_crud_app/widgets/location_input.dart';
+import 'package:provider/provider.dart';
 
 class PlaceFormScreen extends StatefulWidget {
   const PlaceFormScreen({Key? key}) : super(key: key);
@@ -9,10 +14,37 @@ class PlaceFormScreen extends StatefulWidget {
 }
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
-  TextEditingController _titleController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  File? _pickedImage;
+  LatLng? _pickedPosition;
 
-  void _submitForm(){
+  void _selectImage(File pickedImage) {
+    setState(() {
+      _pickedImage = pickedImage;
+    });
+  }
 
+  void _selectPosition(LatLng position) {
+    setState(() {
+      _pickedPosition = position;
+    });
+  }
+
+  bool _isValidForm() {
+    return _titleController.text.isNotEmpty &&
+        _pickedImage != null &&
+        _pickedPosition != null;
+  }
+
+  void _submitForm() {
+    if (!_isValidForm()) {
+      return;
+    }
+
+    Provider.of<GreatPlaces>(context, listen: false)
+        .addPlace(_titleController.text, _pickedImage, _pickedPosition!);
+
+    Navigator.pop(context);
   }
 
   @override
@@ -35,16 +67,21 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                       decoration: const InputDecoration(
                         labelText: 'Título',
                       ),
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                     ),
                     const SizedBox(height: 10),
-                    const ImageInput(),
+                    ImageInput(onSelectImage: _selectImage),
+                    const SizedBox(height: 10),
+                    LocationInput(onSelectPosition: _selectPosition),
                   ],
                 ),
               ),
             ),
           ),
           ElevatedButton.icon(
-            onPressed: _submitForm,
+            onPressed: _isValidForm() ? _submitForm : null,
             icon: const Icon(Icons.add),
             label: const Text('Adicionar'),
           )
