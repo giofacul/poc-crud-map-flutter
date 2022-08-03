@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (ctx) => GreatPlaces(),
+      create: (context) => GreatPlaces(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'Um bom Lugar',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.indigo,
           primaryColor: Colors.indigo,
