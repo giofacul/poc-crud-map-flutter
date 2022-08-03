@@ -136,7 +136,7 @@ packages:
     source: hosted
     version: "4.0.1"
   image_picker:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: image_picker
       url: "https://pub.dartlang.org"
@@ -169,7 +169,7 @@ packages:
       name: image_picker_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.0"
+    version: "2.6.1"
   js:
     dependency: transitive
     description:
@@ -234,22 +234,14 @@ packages:
     source: hosted
     version: "1.0.0"
   path:
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: "direct dev"
->>>>>>> b6d7d9764ed32478a3cb60ccd2a3534ef2c377ad
     description:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
   path_provider:
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: "direct dev"
->>>>>>> b6d7d9764ed32478a3cb60ccd2a3534ef2c377ad
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -319,7 +311,7 @@ packages:
     source: hosted
     version: "4.2.4"
   provider:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: provider
       url: "https://pub.dartlang.org"
@@ -338,11 +330,7 @@ packages:
     source: hosted
     version: "1.8.2"
   sqflite:
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: "direct dev"
->>>>>>> b6d7d9764ed32478a3cb60ccd2a3534ef2c377ad
     description:
       name: sqflite
       url: "https://pub.dartlang.org"
