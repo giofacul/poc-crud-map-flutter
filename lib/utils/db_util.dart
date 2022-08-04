@@ -33,4 +33,10 @@ class DbUtil {
 
     return await db.delete('places', where: "id=?", whereArgs: [id]);
   }
+
+  Future deleteTodo() async {
+    final db = await DbUtil.database();
+
+    return await db.rawDelete('DELETE FROM places');
+  }
 }

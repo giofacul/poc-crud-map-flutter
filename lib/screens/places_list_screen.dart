@@ -16,26 +16,37 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meus Lugares'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.PLACE_FORM);
-              },
-              icon: const Icon(Icons.delete)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add))
-        ],
-      ),
-      body: FutureBuilder(
-        future: Provider.of<GreatPlaces>(context, listen: false).loadPlaces(),
-        builder: (ctx, snapshot) => snapshot.connectionState ==
-                ConnectionState.waiting
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Consumer<GreatPlaces>(
+    return FutureBuilder(
+      future: Provider.of<GreatPlaces>(context, listen: false).loadPlaces(),
+      builder: (ctx, snapshot) => snapshot.connectionState ==
+              ConnectionState.waiting
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Scaffold(
+              appBar: AppBar(
+                title: const Text('Meus Lugares'),
+                actions: [
+                  Consumer<GreatPlaces>(
+                    builder: (ctx, greatPlaces, ch) =>
+                        greatPlaces.itemsCount == 0
+                            ? Container()
+                            : IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    dbUtil.deleteTodo();
+                                  });
+                                },
+                                icon: const Icon(Icons.delete)),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoutes.PLACE_FORM);
+                      },
+                      icon: const Icon(Icons.add))
+                ],
+              ),
+              body: Consumer<GreatPlaces>(
                 child: const Center(
                   child: Text('Nenhum local cadastrado!'),
                 ),
@@ -68,7 +79,7 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
                         ),
                       ),
               ),
-      ),
+            ),
     );
   }
 }

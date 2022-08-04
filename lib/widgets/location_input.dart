@@ -69,23 +69,31 @@ class _LocationInputState extends State<LocationInput> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton.icon(
-              onPressed: _getCurrentUserLocation,
-              icon: const Icon(Icons.location_on),
-              label: Text(
-                'Localização Atual',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+            Expanded(
+              child: TextButton.icon(
+                onPressed: _getCurrentUserLocation,
+                icon: const Icon(Icons.location_on),
+                label: FittedBox(
+                  child: Text(
+                    'Localização Atual',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
                 ),
               ),
             ),
-            TextButton.icon(
-              onPressed: _selectOnMap,
-              icon: const Icon(Icons.map),
-              label: Text(
-                'Selecione no Mapa',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+            Expanded(
+              child: TextButton.icon(
+                onPressed: _selectOnMap,
+                icon: const Icon(Icons.map),
+                label: FittedBox(
+                  child: Text(
+                    'Selecione no Mapa',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
                 ),
               ),
             ),
