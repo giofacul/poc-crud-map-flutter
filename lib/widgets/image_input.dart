@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as syspaths;
+import 'package:permission_handler/permission_handler.dart';
 
 class ImageInput extends StatefulWidget {
   final Function? onSelectImage;
@@ -16,6 +17,16 @@ class ImageInput extends StatefulWidget {
 class _ImageInputState extends State<ImageInput> {
   File? _storedImage;
 
+  Future<void> requestCameraPermission() async {
+    final status = await Permission.camera.request();
+
+    if (status == PermissionStatus.granted) {
+    } else if (status == PermissionStatus.denied) {
+    } else if (status == PermissionStatus.permanentlyDenied) {
+      await openAppSettings();
+    }
+  }
+
   _takePicture() async {
     final ImagePicker picker = ImagePicker();
     XFile? imageFile = await picker.pickImage(
@@ -27,6 +38,7 @@ class _ImageInputState extends State<ImageInput> {
       return null;
     }
 
+    requestCameraPermission();
     setState(() {
       _storedImage = File(imageFile.path);
     });
