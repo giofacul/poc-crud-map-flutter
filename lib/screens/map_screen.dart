@@ -43,6 +43,7 @@ class _MapScreenState extends State<MapScreen> {
         ],
       ),
       body: GoogleMap(
+        myLocationEnabled: true,
         initialCameraPosition: CameraPosition(
           target: LatLng(
             widget.initialLocation!.latitude!,
