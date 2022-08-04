@@ -33,9 +33,7 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
                             ? Container()
                             : IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    dbUtil.deleteTodo();
-                                  });
+                                  showAlertDialog(ctx);
                                 },
                                 icon: const Icon(Icons.delete)),
                   ),
@@ -80,6 +78,41 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
                       ),
               ),
             ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: const Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: const Text("Excluir"),
+      onPressed: () {
+        setState(() {
+          dbUtil.deleteTodo();
+        });
+        Navigator.pop(context);
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Atenção"),
+      content: const Text("Deseja realmente deletar todos os lugares?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
