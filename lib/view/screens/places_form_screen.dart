@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:poc_crud_app/providers/greate_places.dart';
-import 'package:poc_crud_app/widgets/image_input.dart';
-import 'package:poc_crud_app/widgets/location_input.dart';
+import 'package:poc_crud_app/view/custom_widgets/image_input.dart';
+import 'package:poc_crud_app/view/custom_widgets/location_input.dart';
+import 'package:poc_crud_app/view_model/providers/greate_places.dart';
 import 'package:provider/provider.dart';
 
 class PlaceFormScreen extends StatefulWidget {

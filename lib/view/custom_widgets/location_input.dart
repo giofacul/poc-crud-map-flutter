@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:poc_crud_app/models/place.dart';
-import 'package:poc_crud_app/screens/map_screen.dart';
-import 'package:poc_crud_app/utils/location_util.dart';
+import 'package:poc_crud_app/model/place.dart';
+import 'package:poc_crud_app/view/screens/map_screen.dart';
+import 'package:poc_crud_app/view_model/utils/location_util.dart';
 
 class LocationInput extends StatefulWidget {
   final Function? onSelectPosition;

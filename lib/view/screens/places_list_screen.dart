@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poc_crud_app/providers/greate_places.dart';
-import 'package:poc_crud_app/utils/app_routes.dart';
-import 'package:poc_crud_app/utils/db_util.dart';
+import 'package:poc_crud_app/view_model/providers/greate_places.dart';
+import 'package:poc_crud_app/view_model/utils/app_routes.dart';
+import 'package:poc_crud_app/view_model/utils/db_util.dart';
 import 'package:provider/provider.dart';
+
 
 class PlacesListScreen extends StatefulWidget {
   const PlacesListScreen({Key? key}) : super(key: key);

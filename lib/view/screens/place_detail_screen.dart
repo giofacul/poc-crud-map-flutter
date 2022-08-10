@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:poc_crud_app/models/place.dart';
-import 'package:poc_crud_app/screens/map_screen.dart';
+import 'package:poc_crud_app/model/place.dart';
+import 'package:poc_crud_app/view/screens/map_screen.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   const PlaceDetailScreen({Key? key}) : super(key: key);

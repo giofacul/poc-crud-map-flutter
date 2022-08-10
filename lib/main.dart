@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poc_crud_app/providers/greate_places.dart';
-import 'package:poc_crud_app/screens/place_detail_screen.dart';
-import 'package:poc_crud_app/screens/places_form_screen.dart';
-import 'package:poc_crud_app/screens/places_list_screen.dart';
-import 'package:poc_crud_app/utils/app_routes.dart';
+import 'package:poc_crud_app/view/screens/place_detail_screen.dart';
+import 'package:poc_crud_app/view/screens/places_form_screen.dart';
+import 'package:poc_crud_app/view/screens/places_list_screen.dart';
+import 'package:poc_crud_app/view_model/providers/greate_places.dart';
+import 'package:poc_crud_app/view_model/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
 void main() {

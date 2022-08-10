@@ -8,6 +8,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class ImageInput extends StatefulWidget {
   final Function? onSelectImage;
+
   const ImageInput({Key? key, this.onSelectImage}) : super(key: key);
 
   @override

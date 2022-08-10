@@ -3,9 +3,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:poc_crud_app/models/place.dart';
-import 'package:poc_crud_app/utils/db_util.dart';
-import 'package:poc_crud_app/utils/location_util.dart';
+import 'package:poc_crud_app/model/place.dart';
+import 'package:poc_crud_app/view_model/utils/db_util.dart';
+import 'package:poc_crud_app/view_model/utils/location_util.dart';
 
 class GreatPlaces with ChangeNotifier {
   List<Place> _items = [];
